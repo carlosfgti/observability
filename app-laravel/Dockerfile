@@ -41,14 +41,13 @@ RUN touch /home/www-data/.bashrc | echo "PS1='\w\$ '" >> /home/www-data/.bashrc
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-
 RUN curl -L -o /tmp/apm-agent-php_1.9.1_all.apk https://github.com/elastic/apm-agent-php/releases/download/v1.9.1/apm-agent-php_1.9.1_all.apk
 RUN apk add --allow-untrusted /tmp/apm-agent-php_1.9.1_all.apk
 RUN rm -rf /tmp/apm-agent-php_1.9.1_all.apk
 
+COPY docker/php/custom.ini /usr/local/etc/php/conf.d/custom.ini
 
 WORKDIR /var/www
-
 
 FROM builder
 

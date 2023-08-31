@@ -46,6 +46,7 @@ RUN apk add --allow-untrusted /tmp/apm-agent-php_1.9.1_all.apk
 RUN rm -rf /tmp/apm-agent-php_1.9.1_all.apk
 
 COPY docker/php/custom.ini /usr/local/etc/php/conf.d/custom.ini
+COPY docker/php/elastic.ini /usr/local/etc/php/conf.d/elastic.ini
 
 WORKDIR /var/www
 
